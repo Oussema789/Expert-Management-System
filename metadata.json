@@ -1,0 +1,8 @@
+{
+  "name": "AtlasBase — Base de Données & Classeur Excel Local",
+  "description": "Gestionnaire local de bases de données Experts, Sous-traitants et Partenaires avec pièces jointes et génération de classeur Excel (.xlsx) multi-feuilles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
