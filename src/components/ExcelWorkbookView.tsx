@@ -6,6 +6,7 @@ import {
   Upload,
 } from 'lucide-react';
 import { ChangeEvent, useState } from 'react';
+import { DEFAULT_COUNTRIES, DEFAULT_COUNTRY, DEFAULT_DOMAINS } from '../data/seedData';
 import {
   buildAttachmentRelativePath,
   buildEntityAttachmentRelativePath,
@@ -67,16 +68,22 @@ export function ExcelWorkbookView({
 
   const uniqueCountries = Array.from(
     new Set([
+      ...DEFAULT_COUNTRIES,
       ...state.experts.map((e) => e.country),
       ...state.subcontractors.map((s) => s.country),
       ...state.partners.map((p) => p.country),
     ])
   )
     .filter(Boolean)
-    .sort((a, b) => a.localeCompare(b, 'fr'));
+    .sort((a, b) => {
+      if (a === DEFAULT_COUNTRY) return -1;
+      if (b === DEFAULT_COUNTRY) return 1;
+      return a.localeCompare(b, 'fr');
+    });
 
   const uniqueDomains = Array.from(
     new Set([
+      ...DEFAULT_DOMAINS,
       ...state.experts.flatMap((e) => e.domains),
       ...state.subcontractors.flatMap((s) => s.domains),
       ...state.partners.flatMap((p) => p.domains),

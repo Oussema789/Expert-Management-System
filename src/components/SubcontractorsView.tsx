@@ -11,6 +11,7 @@ import {
   X,
 } from 'lucide-react';
 import { ChangeEvent, FormEvent, useMemo, useState } from 'react';
+import { DEFAULT_COUNTRY } from '../data/seedData';
 import { deleteAttachmentBlob, saveAttachmentBlob } from '../storage/localDb';
 import { DocumentAttachmentMeta, Subcontractor } from '../types/database';
 
@@ -359,7 +360,7 @@ function SubcontractorModal({
 }: SubcontractorModalProps) {
   const [code, setCode] = useState(initial?.code ?? nextCode);
   const [name, setName] = useState(initial?.name ?? '');
-  const [country, setCountry] = useState(initial?.country ?? availableCountries[0] ?? '');
+  const [country, setCountry] = useState(initial?.country ?? DEFAULT_COUNTRY);
   const [domains, setDomains] = useState<string[]>(initial?.domains ?? []);
   const [customDomain, setCustomDomain] = useState('');
   const [contactName, setContactName] = useState(initial?.contactName ?? '');

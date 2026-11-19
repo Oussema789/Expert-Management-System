@@ -1,6 +1,6 @@
 import ExcelJS from 'exceljs';
 import JSZip from 'jszip';
-import { DEFAULT_COUNTRIES, DEFAULT_DOMAINS } from '../data/seedData';
+import { DEFAULT_COUNTRIES, DEFAULT_COUNTRY, DEFAULT_DOMAINS } from '../data/seedData';
 import { getAttachmentBlob } from '../storage/localDb';
 import {
   AtlasDatabaseState,
@@ -129,7 +129,11 @@ export async function buildExcelWorkbook(
       ...state.subcontractors.map((s) => s.country).filter(Boolean),
       ...state.partners.map((p) => p.country).filter(Boolean),
     ])
-  ).sort((a, b) => a.localeCompare(b, 'fr'));
+  ).sort((a, b) => {
+    if (a === DEFAULT_COUNTRY) return -1;
+    if (b === DEFAULT_COUNTRY) return 1;
+    return a.localeCompare(b, 'fr');
+  });
 
   const uniqueDomains = Array.from(
     new Set([

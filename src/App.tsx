@@ -15,7 +15,7 @@ import { PartnersView } from './components/PartnersView';
 import { ProjectsView } from './components/ProjectsView';
 import { Sidebar } from './components/Sidebar';
 import { SubcontractorsView } from './components/SubcontractorsView';
-import { DEFAULT_COUNTRIES, DEFAULT_DOMAINS } from './data/seedData';
+import { DEFAULT_COUNTRIES, DEFAULT_COUNTRY, DEFAULT_DOMAINS } from './data/seedData';
 import {
   exportExcelOnly,
   exportFullZipBundle,
@@ -110,7 +110,11 @@ export default function App() {
         ])
       )
         .filter(Boolean)
-        .sort((a, b) => a.localeCompare(b, 'fr')),
+        .sort((a, b) => {
+          if (a === DEFAULT_COUNTRY) return -1;
+          if (b === DEFAULT_COUNTRY) return 1;
+          return a.localeCompare(b, 'fr');
+        }),
     [state]
   );
 

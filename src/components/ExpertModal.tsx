@@ -8,6 +8,7 @@ import {
   X,
 } from 'lucide-react';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { DEFAULT_COUNTRY } from '../data/seedData';
 import {
   deleteAttachmentBlob,
   saveAttachmentBlob,
@@ -49,7 +50,7 @@ export function ExpertModal({
   const [firstName, setFirstName] = useState(expert?.firstName ?? '');
   const [scope, setScope] = useState<ExpertScope>(expert?.scope ?? 'International');
   const [nationality, setNationality] = useState(expert?.nationality ?? '');
-  const [country, setCountry] = useState(expert?.country ?? availableCountries[0] ?? '');
+  const [country, setCountry] = useState(expert?.country ?? DEFAULT_COUNTRY);
   const [domains, setDomains] = useState<string[]>(expert?.domains ?? []);
   const [customDomain, setCustomDomain] = useState('');
   const [yearsExperience, setYearsExperience] = useState<number>(
@@ -67,9 +68,7 @@ export function ExpertModal({
   // New project quick state
   const [newProjTitle, setNewProjTitle] = useState('');
   const [newProjYear, setNewProjYear] = useState<number>(new Date().getFullYear());
-  const [newProjCountry, setNewProjCountry] = useState(
-    expert?.country ?? availableCountries[0] ?? ''
-  );
+  const [newProjCountry, setNewProjCountry] = useState(expert?.country ?? DEFAULT_COUNTRY);
   const [newProjDomain, setNewProjDomain] = useState(
     expert?.domains[0] ?? availableDomains[0] ?? ''
   );

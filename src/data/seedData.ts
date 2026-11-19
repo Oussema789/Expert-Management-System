@@ -20,20 +20,18 @@ export const DEFAULT_DOMAINS: string[] = [
   'Aménagement Urbain',
 ];
 
+export const DEFAULT_COUNTRY = 'Tunisie';
+
 export const DEFAULT_COUNTRIES: string[] = [
-  'France',
   'Tunisie',
-  'Maroc',
-  'Sénégal',
-  'Côte d’Ivoire',
-  'Belgique',
-  'Suisse',
-  'Allemagne',
-  'Canada',
   'Algérie',
+  'Burkina Faso',
   'Cameroun',
-  'Égypte',
-  'Espagne',
+  "Côte d'Ivoire",
+  'Gabon',
+  'Mali',
+  'Maroc',
+  'Mauritanie',
 ];
 
 export const INITIAL_EXPERTS: Expert[] = [
